@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Broker Comparison</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    .card-rating {
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      padding: 1rem;
+    }
+    .card-rating h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .compare-section {
+      padding: 2rem 0;
+    }
+    .chart-placeholder {
+      background-color: #f5f5f5;
+      height: 300px;
+      border-radius: 8px;
+    }
+    table {
+      border: 1px solid #ddd;
+    }
+    table thead {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+   <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Compare Broker</li>
+      </ol>
+    </nav>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">BLUESTOCK</a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Active Clients</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Charges</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Comparison</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Complaints</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Ratings</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Comparison Cards -->
+  <div class="container compare-section">
+    <div class="row text-center mb-4">
+      <div class="col-md-5">
+        <div class="card-rating border">
+          <h5>Angel One</h5>
+          <h4>4.7</h4>
+          <button class="btn btn-success btn-sm">Open Account</button>
+        </div>
+      </div>
+      <div class="col-md-2 d-flex align-items-center justify-content-center">
+        <h4>vs</h4>
+      </div>
+      <div class="col-md-5">
+        <div class="card-rating border">
+          <h5>Zerodha</h5>
+          <h4>4.6</h4>
+          <button class="btn btn-success btn-sm">Open Account</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Clients Chart -->
+    <h5>Active Clients</h5>
+    <div class="chart-placeholder mb-4"></div>
+
+    <!-- Account Charges Table -->
+    <h5>Account Opening and Maintenance Charges</h5>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Charges</th>
+          <th>Angel One</th>
+          <th>Zerodha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account Opening</td>
+          <td>₹0</td>
+          <td>₹200</td>
+        </tr>
+        <tr>
+          <td>Annual Maintenance</td>
+          <td>₹20</td>
+          <td>₹0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Brokerage Charges -->
+    <h5>Brokerage Charges</h5>
+    <div class="row text-center mb-4">
+      <div class="col-md-6">
+        <div class="card p-3">
+          <p>Angel One</p>
+          <p>Delivery: ₹20 | Intraday: ₹20</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3">
+          <p>Zerodha</p>
+          <p>Delivery: ₹0 | Intraday: ₹20</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complaints Chart -->
+    <h5>Complaints</h5>
+    <div class="chart-placeholder mb-4"></div>
+
+    <!-- Share Holdings -->
+    <h5>Share Holdings</h5>
+    <div class="chart-placeholder mb-4"></div>
+
+    <!-- Pros and Cons -->
+    <h5>Pros & Cons</h5>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Pros</th>
+          <th>Cons</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Angel One: ₹0 delivery charges</td>
+          <td>Zerodha: No direct investment in mutual funds</td>
+        </tr>
+        <tr>
+          <td>Zerodha: Fast UI</td>
+          <td>Angel One: App bugs reported</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Ratings Again -->
+    <h5>Ratings</h5>
+    <div class="row text-center">
+      <div class="col-md-6">
+        <div class="card-rating border">
+          <h5>Angel One</h5>
+          <p>Ease of Use: ⭐⭐⭐⭐☆</p>
+          <p>Customer Support: ⭐⭐⭐⭐☆</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-rating border">
+          <h5>Zerodha</h5>
+          <p>Ease of Use: ⭐⭐⭐⭐⭐</p>
+          <p>Customer Support: ⭐⭐⭐☆☆</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Chart -->
+    <h5 class="mt-4">Financials</h5>
+    <div class="chart-placeholder mb-5"></div>
+  </div>
+<!-- Footer Include -->
+<div id="footer-placeholder"></div>
+
+  <!-- Footer Component -->
+  <div id="footer-container" class="mt-5"></div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Load Navbar
+    fetch("components/Navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar-container").innerHTML = data;
+      });
+
+    // Load Footer
+    fetch("components/Footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-container").innerHTML = data;
+      });
+      
+fetch("http://127.0.0.1:8000/brokers/")
+  .then(res => res.json())
+  .then(data => {
+    console.log(data); // Test output
+    // You can now populate your broker cards dynamically
+  });
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+<!-- check refernce and correct -->
+<!-- move that breadcrumb towards right -->

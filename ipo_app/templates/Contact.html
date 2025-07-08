@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Bluestock</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .email-box, .chat-box {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+    .email-box:hover, .chat-box:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .btn-arrow {
+      background-color: #e5f0ff;
+      color: #1a1a1a;
+      border: none;
+    }
+    .btn-arrow:hover { background-color: #d0e3ff; }
+    .community-section {
+      background-color: #6178ff;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .qr-floating {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #eaeaea;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 170px;
+      z-index: 999;
+      font-size: 14px;
+    }
+    .btn-black {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+    }
+    .btn-black:hover { background-color: #333; }
+    .btn-close-custom {
+      background: none;
+      border: none;
+      font-size: 18px;
+      padding: 0;
+      cursor: pointer;
+    }
+    .btn-close-custom:hover { color: red; }
+  </style>
+</head>
+<body>
+  {% include 'components/Navbar.html' %}
+
+  <div class="container mt-3">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="container mb-5">
+    <h3 class="fw-semibold mb-4">How Can We Help You?</h3>
+    <div class="row g-4">
+      {% for option in contact_options %}
+      <div class="col-md-6">
+        <div class="email-box">
+          <h5>{{ option.title }}</h5>
+          <p>{{ option.description }}</p>
+          {% if option.link %}
+          <a class="btn btn-arrow d-flex align-items-center justify-content-between" href="{{ option.link }}">
+            {{ option.link }} <i class="{{ option.icon_class }}"></i>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="community-section position-relative">
+    <h2 class="fw-bold">Interact With Us in Our Active Community</h2>
+    <p class="mt-3">Ask questions or discuss anything related to investing or trading<br> in the most active trading & investing community</p>
+    <button class="btn-black mt-3">JOIN NOW</button>
+
+    <div id="qrPopup" class="qr-floating">
+      <div class="qr-header d-flex justify-content-between align-items-start">
+        <span class="fw-semibold">Download Bluestock<br>Mobile App</span>
+        <button onclick="document.getElementById('qrPopup').style.display='none'" class="btn-close-custom">&times;</button>
+      </div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://bluestock.in/app" alt="QR Code" class="my-2">
+      <div class="d-flex justify-content-around mt-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" style="width: 40px;">
+        <i class="bi bi-apple" style="font-size: 24px;"></i>
+      </div>
+    </div>
+  </div>
+
+  {% include 'components/Footer.html' %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

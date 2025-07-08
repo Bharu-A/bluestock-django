@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IPO Tracker</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<footer class="footer-section">
+  <div class="container">
+    <div class="row">
+
+      <!-- Resources -->
+      <div class="col-md-2 col-sm-6 mb-4">
+        <h6>Resources</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Trading View</a></li>
+          <li><a href="#">NSE Holidays</a></li>
+          <li><a href="#">e-Voting CDSL</a></li>
+          <li><a href="#">e-Voting NSDL</a></li>
+          <li><a href="#">Market Timings</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="col-md-2 col-sm-6 mb-4">
+        <h6>Company</h6>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'careers' %}">Careers</a></li>
+          <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+          <li><a href="{% url 'about_us' %}">About Us</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="{% url 'blogs-page' %}">Blogs</a></li>
+        </ul>
+      </div>
+
+      <!-- Offerings -->
+      <div class="col-md-2 col-sm-6 mb-4">
+        <h6>Offerings</h6>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'compare-brokers' %}">Compare Broker</a></li>
+          <li><a href="#">Fin Calculators</a></li>
+          <li><a href="{% url 'home' %}">IPO</a></li>
+          <li><a href="{% url 'all-brokers' %}">All Brokers</a></li>
+          <li><a href="{% url 'products' %}">Products</a></li>
+        </ul>
+      </div>
+
+      <!-- Links -->
+      <div class="col-md-2 col-sm-6 mb-4">
+        <h6>Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'shark-investors' %}">Shark Investor</a></li>
+          <li><a href="{% url 'large_cap_funds' %}">Mutual Funds</a></li>
+          <li><a href="#">Sitemap</a></li>
+          <li><a href="#">Indian Indices</a></li>
+          <li><a href="#">Bug Bounty Program</a></li>
+        </ul>
+      </div>
+
+      <!-- Policy -->
+      <div class="col-md-2 col-sm-6 mb-4">
+        <h6>Policy</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Trust & Security</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Info -->
+      <div class="col-md-2 col-sm-6 mb-4 text-center text-md-start">
+        <div class="footer-logo">BLUESTOCK</div>
+        <div>Bluestock Fintech<br>Pune, Maharashtra</div>
+        <div class="mt-2">MSME Reg. No:<br>UDYAM-MH-01-0138001</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Startup_India_Logo.svg" alt="Startup India" style="height:30px; margin-top:10px;">
+        <div class="social-icons mt-3">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-telegram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <p class="small text-muted">
+          Investment in securities markets are subject to market risks, read all the related documents carefully before investing as prescribed by SEBI...
+          <br>
+          Contact: <a href="mailto:hello@bluestock.in">hello@bluestock.in</a>, <a href="mailto:cto@bluestock.in">cto@bluestock.in</a>
+          <br>
+          Disclaimer: This is not a SEBI-registered advisory service. Educational use only.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="bottom-bar mt-4">
+      Bluestock Fintech All Rights Reserved. | Made with ❤️ in Pune, Maharashtra
+    </div>
+  </div>
+</footer>
+
+<!-- Cookies Component -->
+<div id="cookieConsent" class="position-fixed bottom-0 end-0 m-4 shadow-lg bg-white rounded-4 p-3 d-none" style="max-width: 320px; z-index: 1050;">
+  <div class="d-flex align-items-start gap-2">
+    <div style="font-size: 2rem;">🍪</div>
+    <div class="flex-grow-1">
+      <p class="mb-2" style="font-size: 0.95rem;">
+        We use cookies for essential website functions and to better understand how you use our site, so we can create the best possible experience for you ❤️
+      </p>
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="#" class="text-decoration-underline text-muted small">Privacy Policy</a>
+        <button class="btn btn-primary btn-sm px-3" id="acceptCookies">Got it</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  footer {
+    background-color: #f9f9f9;
+    padding: 40px 20px 20px;
+    font-size: 14px;
+    color: #333;
+  }
+  footer a {
+    color: #333;
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+  .footer-logo {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .social-icons a {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #333;
+  }
+  .bottom-bar {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 13px;
+  }
+</style>
+
+</body>
+</html>

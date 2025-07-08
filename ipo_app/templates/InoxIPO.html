@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inox India IPO - Bluestock Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .blog-title { font-weight: bold; font-size: 24px; }
+    .table td, .table th { vertical-align: middle; }
+    .highlight-table { background: #f8f8f8; }
+    .sidebar-box { background: #f0f0f0; padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px; }
+    .meta { font-size: 0.9rem; color: gray; }
+  </style>
+</head>
+<body>
+   <div id="navbar-container"></div>
+
+<!-- Breadcrumb -->
+<div class="container mt-3">
+   <!-- Breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="Home.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="Blog.html">Blog</a></li>
+        <li class="breadcrumb-item"><a href="IPOHome.html">IPO</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Inox India IPO</li>
+      </ol>
+    </nav>
+</div>
+
+      <div class="container mt-4">
+  <div class="row">
+    <!-- Blog Content -->
+    <div class="col-md-8">
+      <h2 class="blog-title">Key Things to Know About Inox India IPO</h2>
+      <p class="meta">22 December 2023 • 4 min read</p>
+
+      <!-- Featured Image -->
+      <img src="yourimage.jpg" class="img-fluid my-3" alt="Inox India IPO Image"/>
+
+      <!-- Intro -->
+      <p>One of the leading manufacturers of cryogenic storage tanks, Inox India, is about to launch its IPO...</p>
+
+      <!-- Highlight Table -->
+      <table class="table highlight-table table-bordered">
+        <tbody>
+          <tr><th>IPO Date</th><td>14 December, 2023 to 18 December, 2023</td></tr>
+          <tr><th>Price Band</th><td>Rs 627 to Rs 660 per share</td></tr>
+          <tr><th>Face Value</th><td>Rs 2 per share</td></tr>
+          <tr><th>Lot Size</th><td>22 Shares</td></tr>
+          <tr><th>Total Issue Size</th><td>22,110,955 shares (Rs 1,459.32 Cr)</td></tr>
+          <tr><th>Offer for Sale</th><td>22,110,955 shares of Rs 2</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Detailed Points -->
+      <h5>• Listing Date</h5>
+      <p>Inox India shares trading will begin on 21 December 2023 as per schedule.</p>
+
+      <h5>• Company Financials</h5>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Year</th><th>Assets</th><th>Revenue</th><th>Profit After Tax</th><th>Net Worth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>30 Sep 2023</td><td>1,155.81</td><td>580.00</td><td>103.34</td><td>554.24</td></tr>
+          <tr><td>31 Mar 2023</td><td>1,148.36</td><td>984.20</td><td>152.71</td><td>549.48</td></tr>
+          <tr><td>31 Mar 2022</td><td>896.75</td><td>803.71</td><td>130.50</td><td>502.28</td></tr>
+          <tr><td>31 Mar 2021</td><td>687.20</td><td>608.99</td><td>96.11</td><td>371.51</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+      <div class="sidebar-box text-center">
+        <div style="height:150px; background:#ccc;">[ Ad/Promotion ]</div>
+      </div>
+      <div class="sidebar-box">
+        <h6 class="fw-bold">Top Gainers</h6>
+        <ul class="list-unstyled mb-0">
+          <li>Info Edge: ₹5,246.15 (+13.86%)</li>
+          <li>Adani Ports: ₹1,154.25 (+2.61%)</li>
+        </ul>
+      </div>
+      <div class="sidebar-box">
+        <h6 class="fw-bold">Top Losers</h6>
+        <ul class="list-unstyled mb-0">
+          <li>Share Cement: ₹272.03 (-4.71%)</li>
+          <li>Bajaj Holdings: ₹114.25 (-1.57%)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer Include -->
+<div id="footer-placeholder"></div>
+
+  <!-- Footer Component -->
+  <div id="footer-container" class="mt-5"></div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Load Navbar
+    fetch("components/Navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("navbar-container").innerHTML = data;
+      });
+
+    // Load Footer
+    fetch("components/Footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-container").innerHTML = data;
+      });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

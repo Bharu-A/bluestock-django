@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluestock</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .highlight {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .rounded-section {
+            border-radius: 15px;
+            background-color: #f5f5f5;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .compare-section {
+            background-color: #f3f6fd;
+            padding: 40px 0;
+        }
+
+        .btn-compare {
+            background-color: #4a00e0;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+ {% include 'components/Navbar.html' %}
+
+    <div class="container py-5">
+        <!-- Hero Section -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <h5 class="text-success">NEW | App 2.0</h5>
+                <h1>Free & Open Stock Market Analytics For GenZ</h1>
+                <p>Thousands of stocks and investors in India use our state-of-the-art mobile app regularly.</p>
+                <button class="btn btn-dark">Get Bluestock App</button>
+            </div>
+            <div class="col-md-6 bg-light" style="height: 250px; border-radius: 10px;"></div>
+        </div>
+
+        <!-- Highlights Section -->
+        <div class="text-center mb-4">
+            <h2 class="highlight">It’s easy<br>It’s powerful<br>It’s beautiful</h2>
+        </div>
+
+        <div class="text-center mb-5">
+            <h3>Bluestock Highlights</h3>
+            <p>Simplified for all, from beginners to advanced traders. Track everything from analytics to community insights.</p>
+        </div>
+
+        <div class="row text-center mb-5">
+            <div class="col-md-4">
+                <div class="rounded-section">
+                    <div class="card-icon">📈</div>
+                    <h5>Market Chart</h5>
+                    <ul class="list-unstyled">
+                        <li>Technical, Fundamental</li>
+                        <li>Trading Psychology</li>
+                        <li>Risk Assessment</li>
+                        <li>Option Trading</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="rounded-section">
+                    <div class="card-icon">📊</div>
+                    <h5>Analytics</h5>
+                    <ul class="list-unstyled">
+                        <li>Live Sector Trend</li>
+                        <li>IPO Dashboard</li>
+                        <li>Stock Overview</li>
+                        <li>TradingView Chart</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="rounded-section">
+                    <div class="card-icon">🎓</div>
+                    <h5>Club</h5>
+                    <ul class="list-unstyled">
+                        <li>Educational Resource</li>
+                        <li>Mock Stock Club</li>
+                        <li>Returns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Traders Love -->
+        <div class="mb-5">
+            <h3>Why do traders love bluestock?</h3>
+            <p>Bluestock combines tracking, learning, and analytics in one platform designed for modern traders.</p>
+            <div class="d-flex gap-3">
+                <div>📉 Analytics</div>
+                <div>📝 Blogs</div>
+                <div>📹 Videos</div>
+            </div>
+        </div>
+
+        <!-- App Download -->
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <h4>Bluestock App 2.0 is Live Now!</h4>
+                <p>Download Bluestock from your favorite app store.</p>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-dark">Google Play</button>
+                    <button class="btn btn-dark">App Store</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="" alt="App UI" class="img-fluid">
+            </div>
+        </div>
+
+        <!-- Market Movers -->
+        <div class="row mb-5">
+            <h4 class="mb-3">Market Movers</h4>
+            <div class="col-md-6">
+                <h6>52 Week High</h6>
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr><th>Stock</th><th>Price</th><th>Change</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Stock A</td><td>₹1500</td><td class="text-success">+3%</td></tr>
+                        <tr><td>Stock B</td><td>₹320</td><td class="text-danger">-1%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h6>52 Week Low</h6>
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr><th>Stock</th><th>Price</th><th>Change</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Stock X</td><td>₹95</td><td class="text-success">+2%</td></tr>
+                        <tr><td>Stock Y</td><td>₹400</td><td class="text-danger">-5%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Compare Brokers -->
+        <div class="compare-section text-center">
+            <h3>Compare and choose<br>Best Stock Broker for you</h3>
+            <div class="d-flex justify-content-center gap-3 my-4">
+                <select class="form-select w-auto">
+                    <option>Angel One</option>
+                </select>
+                <select class="form-select w-auto">
+                    <option>Zerodha</option>
+                </select>
+                <button class="btn btn-compare">Compare</button>
+            </div>
+        </div>
+
+    </div>
+ {% include 'components/Footer.html' %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

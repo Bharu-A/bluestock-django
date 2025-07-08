@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Bluestock</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .stat-card {
+      background-color: #eef2ff;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+    }
+    .faq-section details {
+      margin-bottom: 1rem;
+    }
+    .join-box {
+      background-color: #4f46e5;
+      color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+    details[open] .arrow-icon {
+      transform: rotate(180deg);
+    }
+    .arrow-icon {
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  {% include 'components/Navbar.html' %}
+
+ <div class="container mt-3 text-end">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Community</li>
+    </ol>
+  </nav>
+</div>
+  <!-- Main Content -->
+  <div class="container py-5">
+    <h1 class="text-center mb-4">About Us</h1>
+    <p class="lead text-center">Bluestock is a mobile app for stock market learning, analytics & club.</p>
+    <p class="text-center">We are passionate about helping you succeed in the stock market by providing cutting-edge tools and a supportive community. Our platform combines analytics, education, and community to make your trading experience smarter and better.</p>
+
+    <!-- Stats -->
+    <div class="row text-center mt-5">
+      <div class="col-md-4">
+        <div class="stat-card">
+          <h2>5 Thousand</h2>
+          <p>Customers</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <h2>20+</h2>
+          <p>Team Members</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <h2>4.9★</h2>
+          <p>Rating</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- News -->
+    <section class="mt-5">
+      <h3 class="text-center mb-4">Trader Talk: Recent News</h3>
+      <div class="row text-center">
+        <div class="col-md-4"><h5>Business Standard</h5><p>Bluestock is riding a wave. All new equity traders have a single source now.</p></div>
+        <div class="col-md-4"><h5>Medium</h5><p>Bluestock is the stock app to know: investments, analysis, and success — experience summarized in features.</p></div>
+        <div class="col-md-4"><h5>BusinessWorld</h5><p>High-value Experience Featured Top 10 in 2024, breaking the 25,000 DAU mark.</p></div>
+      </div>
+      <p class="text-center mt-3"><a href="#">Media & Press Resources</a></p>
+    </section>
+
+    <!-- Join -->
+    <section class="join-box mt-5">
+      <h4>Want to join us?</h4>
+      <p>We're taking complicated stuff and making it super simple. Our teams are full of smart and savvy folks working on challenging tasks.</p>
+      <p>Think you're customer-focused enough? Write to us at <strong>hello@bluestock.in</strong>.</p>
+      <a href="#" class="btn btn-light">Apply Now</a>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section mt-5">
+      <h3 class="text-center mb-4">Frequently Asked Questions</h3>
+      <div class="faq-container mx-auto" style="max-width: 700px;">
+        <details class="faq-item bg-white p-3 mb-3 rounded shadow-sm">
+          <summary class="d-flex justify-content-between align-items-center fw-semibold fs-5">
+            What is Bluestock?
+            <span class="arrow-icon">▾</span>
+          </summary>
+          <p class="mt-2">Bluestock is a mobile platform for learning and tracking stock market investments with analytics and community features.</p>
+        </details>
+        <details class="faq-item bg-white p-3 mb-3 rounded shadow-sm">
+          <summary class="d-flex justify-content-between align-items-center fw-semibold fs-5">
+            What platforms does Bluestock support?
+            <span class="arrow-icon">▾</span>
+          </summary>
+          <p class="mt-2">Bluestock is available on Android and iOS platforms.</p>
+        </details>
+        <details class="faq-item bg-white p-3 mb-3 rounded shadow-sm">
+          <summary class="d-flex justify-content-between align-items-center fw-semibold fs-5">
+            Is there educational content on the app?
+            <span class="arrow-icon">▾</span>
+          </summary>
+          <p class="mt-2">Yes, Bluestock offers beginner to advanced stock market tutorials and insights.</p>
+        </details>
+        <details class="faq-item bg-white p-3 mb-3 rounded shadow-sm">
+          <summary class="d-flex justify-content-between align-items-center fw-semibold fs-5">
+            Is Bluestock free to use?
+            <span class="arrow-icon">▾</span>
+          </summary>
+          <p class="mt-2">Yes, Bluestock has a free plan with premium features available under subscription.</p>
+        </details>
+        <details class="faq-item bg-white p-3 mb-3 rounded shadow-sm">
+          <summary class="d-flex justify-content-between align-items-center fw-semibold fs-5">
+            How can I get technical support for the app?
+            <span class="arrow-icon">▾</span>
+          </summary>
+          <p class="mt-2">You can reach our support team via the in-app chat or email us at <strong>support@bluestock.in</strong>.</p>
+        </details>
+      </div>
+    </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% include 'components/Footer.html' %}
+
+  <script>
+  // Fetch Stats
+  fetch("/api/stats/")
+    .then(res => res.json())
+    .then(data => {
+      const stats = document.getElementById("stats-container");
+      data.forEach(stat => {
+        stats.innerHTML += `
+          <div class="col-md-4">
+            <div class="stat-card">
+              <h2>${stat.value}</h2>
+              <p>${stat.label}</p>
+            </div>
+          </div>
+        `;
+      });
+    });
+
+  // Fetch News
+  fetch("/api/news/")
+    .then(res => res.json())
+    .then(data => {
+      const news = document.getElementById("news-container");
+      data.forEach(article => {
+        news.innerHTML += `
+          <div class="col-md-4">
+            <h5>${article.source}</h5>
+            <p>${article.content}</p>
+          </div>
+        `;
+      });
+    });
+
+  // Fetch FAQs
+  fetch("/api/faqs/")
+    .then(res => res.json())
+    .then(data => {
+      const faq = document.getElementById("faq-container");
+      data.forEach(item => {
+        faq.innerHTML += `
+          <details class="faq-item bg-white p-3 mb-3 rounded shadow-sm">
+            <summary class="d-flex justify-content-between align-items-center fw-semibold fs-5">
+              ${item.question}
+              <span class="arrow-icon">▾</span>
+            </summary>
+            <p class="mt-2">${item.answer}</p>
+          </details>
+        `;
+      });
+    });
+</script>
+<script>
+  fetch('http://127.0.0.1:8000/ipo/')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('ipo-container');
+      data.forEach(ipo => {
+        container.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="card p-3 h-100 shadow-sm">
+              <h5>${ipo.company_name}</h5>
+              <p><strong>Status:</strong> ${ipo.status}</p>
+              <p><strong>Price Band:</strong> ${ipo.price_band}</p>
+              <p><strong>Open:</strong> ${ipo.open_date}</p>
+              <p><strong>Close:</strong> ${ipo.close_date}</p>
+              <p><strong>Return:</strong> ${ipo.current_return ?? 'N/A'}%</p>
+            </div>
+          </div>
+        `;
+      });
+    })
+    .catch(error => {
+      console.error("Error fetching IPO data:", error);
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+<!-- move that breadcrumb towards right -->

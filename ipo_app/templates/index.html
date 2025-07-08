@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IPO Tracker</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+  <!-- Navbar Component -->
+  <div id="navbar-container"></div>
+
+  <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="Home.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">IPO</li>
+      </ol>
+    </nav>
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Initial Public Offerings</h1>
+
+    <ul class="nav nav-tabs" id="ipoTabs" role="tablist">
+      <li class="nav-item">
+        <button class="nav-link active" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab">Upcoming</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" id="ongoing-tab" data-bs-toggle="tab" data-bs-target="#ongoing" type="button" role="tab">Ongoing</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" id="listed-tab" data-bs-toggle="tab" data-bs-target="#listed" type="button" role="tab">Listed</button>
+      </li>
+    </ul>
+
+    <div class="tab-content mt-4" id="ipoTabsContent">
+      <div class="tab-pane fade show active" id="upcoming" role="tabpanel">
+        <div class="row" id="upcoming-list"></div>
+      </div>
+      <div class="tab-pane fade" id="ongoing" role="tabpanel">
+        <div class="row" id="ongoing-list"></div>
+      </div>
+      <div class="tab-pane fade" id="listed" role="tabpanel">
+        <div class="row" id="listed-list"></div>
+      </div>
+    </div>
+  </div>
+<section class="py-5 bg-light">
+  <div class="container">
+    <h4 class="fw-semibold">Frequently Asked Questions?</h4>
+    <p class="text-muted">Find answers to common questions that come in your mind related to IPO.</p>
+
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            How to Subscribe to an IPO?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li>Step 1: Login to your respective service provider.</li>
+              <li>Step 2: Click on the IPO tab.</li>
+              <li>Step 3: Select the IPO you want to bid and enter the relevant details.</li>
+              <li>Step 4: Your subscription will be completed once you make the payment or give permission.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other questions below -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            Should I buy an IPO first day?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">It depends on the demand, pricing, and company fundamentals.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+            How do you know if an IPO is good?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Check company fundamentals, industry performance, and demand in grey market.</div>
+        </div>
+      </div>
+
+      <!-- Add more questions below following same pattern -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+            How to check IPO start date?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">You can find the IPO dates on your stock broker app or stock exchange site.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+            What is issue size?
+          </button>
+        </h2>
+        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">It is the total value of shares offered in an IPO.</div>
+        </div>
+      </div>
+
+      <!-- Add more as needed -->
+
+    </div>
+  </div>
+</section>
+
+  <!-- Footer Component -->
+  <div id="footer-container" class="mt-5"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <script>
+  // Load Navbar
+  fetch("components/Navbar.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("navbar-container").innerHTML = data;
+    });
+
+  // Load Footer and Cookie Consent Logic
+  fetch("components/Footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer-container").innerHTML = data;
+
+      setTimeout(() => {
+        const popup = document.getElementById("cookieConsent");
+        const acceptBtn = document.getElementById("acceptCookies");
+
+        if (popup && !localStorage.getItem("cookieAccepted")) {
+          popup.classList.remove("d-none");
+        }
+
+        if (acceptBtn) {
+          acceptBtn.addEventListener("click", () => {
+            localStorage.setItem("cookieAccepted", "true");
+            popup.classList.add("d-none");
+          });
+        }
+      }, 100);
+    });  
+</script>
+</body>
+</html>
+
+
