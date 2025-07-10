@@ -38,3 +38,7 @@ admin.site.register(Product)
 admin.site.register(SharkInvestor)
 admin.site.register(TechnicalIndicator)
 admin.site.register(TechnicalLesson)
+from .models import LoginLog
+admin.site.register(LoginLog)
+from .models import MediaItem
+admin.site.register(MediaItem)

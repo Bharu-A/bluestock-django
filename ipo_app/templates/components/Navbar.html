@@ -1,14 +1,28 @@
+{% load static %}
+<Style>
+  .dropdown-menu {
+    border-radius: 15px;
+    background-color: white;
+  }
 
- <!-- Header/Navbar -->
+  .dropdown-item {
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+</style>
 <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
   <div class="container">
     <!-- Logo -->
-    <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-      <img src="logos\Logo.jpg" alt="Logo" width="50" class="me-2" />
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+      <img src="{% static 'logos/Logo.jpg' %}" alt="Logo" width="50" class="me-2" />
       <span>BLUESTOCK</span>
     </a>
 
-    <!-- Toggler (for mobile) -->
+    <!-- Toggler -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,45 +30,59 @@
     <!-- Nav Items -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav align-items-center">
-  <li class="nav-item"><a class="nav-link" href="index.html">IPO</a></li>
-  <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">IPO</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
 
-  <!-- Dropdown -->
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown">
-      Products
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Product 1</a></li>
-      <li><a class="dropdown-item" href="#">Product 2</a></li>
-    </ul>
-  </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown">
+            Products
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Product 1</a></li>
+            <li><a class="dropdown-item" href="#">Product 2</a></li>
+          </ul>
+        </li>
 
-  <li class="nav-item"><a class="nav-link" href="#">Brokers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Brokers</a></li>
 
-  <!-- Live News -->
-  <li class="nav-item me-4"> <!-- Added spacing here -->
-    <a class="nav-link d-flex align-items-center" href="#">
-      Live News
-      <span class="badge bg-primary text-white ms-1" style="font-size: 0.6rem;">NEW</span>
-    </a>
-  </li>
+        <li class="nav-item me-4">
+          <a class="nav-link d-flex align-items-center" href="#">
+            Live News
+            <span class="badge bg-primary text-white ms-1" style="font-size: 0.6rem;">NEW</span>
+          </a>
+        </li>
+<li class="nav-item dropdown position-relative">
+  <a class="nav-link" href="#" role="button" id="gridDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-grid-3x3-gap-fill fs-5"></i>
+  </a>
+  <ul class="dropdown-menu p-3 shadow" aria-labelledby="gridDropdown" style="min-width: 150px; border-radius: 15px;">
+  <li><a class="dropdown-item fw-semibold py-2" href="{% url 'home' %}">Home</a></li>
+<li><a class="dropdown-item fw-semibold py-2" href="{% url 'products' %}">Products</a></li>
+<!-- <li><a class="dropdown-item fw-semibold py-2" href="{% url 'media' %}">Media</a></li>
+<li><a class="dropdown-item fw-semibold py-2" href="{% url 'pricing' %}">Pricing</a></li>
+<li><a class="dropdown-item fw-semibold py-2" href="{% url 'support' %}">Support</a></li> -->
 
-  <!-- Sign In -->
-  <li class="nav-item"><a class="nav-link" href="Login.html">Sign In</a></li>
+  </ul>
+</li>
 
-  <!-- Sign Up -->
-  <li class="nav-item">
-    <a class="btn btn-primary rounded px-3 ms-2" href="SignUp.html">Sign Up Now</a>
-  </li>
+        {% if request.user.is_authenticated %}
+          <!-- Show user's name and Logout -->
+          <li class="nav-item">
+            <span class="nav-link fw-semibold text-dark">Hi, {{ request.user.first_name }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-danger ms-2" href="{% url 'logout' %}">Logout</a>
+          </li>
+        {% else %}
+          <!-- Show Login and Sign Up -->
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Sign In</a></li>
+          <li class="nav-item">
+            <a class="btn btn-primary rounded px-3 ms-2" href="{% url 'signup' %}">Sign Up</a>
+          </li>
+        {% endif %}
 
-  <!-- Grid Icon -->
-  <li class="nav-item ms-3">
-    <a class="nav-link" href="#"><i class="bi bi-grid-3x3-gap-fill fs-5"></i></a>
-  </li>
-</ul>
-
+        
+      </ul>
     </div>
   </div>
 </nav>
-

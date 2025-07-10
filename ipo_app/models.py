@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 class IPO(models.Model):
     STATUS_CHOICES = [
         ('upcoming', 'Upcoming'),
@@ -19,11 +21,13 @@ class IPO(models.Model):
     current_market_price = models.FloatField(null=True, blank=True)
     rhp_pdf = models.FileField(upload_to='docs/', null=True, blank=True)
     drhp_pdf = models.FileField(upload_to='docs/', null=True, blank=True)
+
     @property
     def listing_gain(self):
         if self.ipo_price and self.listing_price:
             return round(((self.listing_price - self.ipo_price) / self.ipo_price) * 100, 2)
         return None
+
     @property
     def current_return(self):
         if self.ipo_price and self.current_market_price:
@@ -32,18 +36,17 @@ class IPO(models.Model):
 
     def __str__(self):
         return self.company_name
-from django.db import models
 
 class Stat(models.Model):
-    label = models.CharField(max_length=100)    
-    value = models.CharField(max_length=100)   
+    label = models.CharField(max_length=100)
+    value = models.CharField(max_length=100)
 
     def __str__(self):
         return self.label
 
 class NewsArticle(models.Model):
-    source = models.CharField(max_length=100)     
-    content = models.TextField()                  
+    source = models.CharField(max_length=100)
+    content = models.TextField()
 
     def __str__(self):
         return self.source
@@ -54,16 +57,24 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
 class Broker(models.Model):
     name = models.CharField(max_length=100)
-    logo_url = models.URLField()
     rating = models.FloatField()
-    amc = models.CharField(max_length=50) 
-    brokerage = models.CharField(max_length=50) 
-    features = models.JSONField(default=list) 
+    account_opening_charge = models.CharField(max_length=50, blank=True, null=True)
+    amc = models.CharField(max_length=50)
+    delivery_charge = models.CharField(max_length=50, blank=True, null=True)
+    intraday_charge = models.CharField(max_length=50, blank=True, null=True)
+    ease_of_use = models.IntegerField(default=0)
+    customer_support = models.IntegerField(default=0)
+    pros = models.TextField(blank=True, null=True)
+    cons = models.TextField(blank=True, null=True)
+    logo_url = models.URLField(blank=True, null=True)
+    features = models.JSONField(default=list, blank=True, null=True)
 
     def __str__(self):
         return self.name
+
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
@@ -73,23 +84,7 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
-    from django.db import models
 
-class Broker(models.Model):
-    name = models.CharField(max_length=100)
-    rating = models.FloatField()
-    account_opening_charge = models.CharField(max_length=50)
-    amc = models.CharField(max_length=50)
-    delivery_charge = models.CharField(max_length=50)
-    intraday_charge = models.CharField(max_length=50)
-    ease_of_use = models.IntegerField()  # out of 5
-    customer_support = models.IntegerField(default=0)
-    pros = models.TextField()
-    cons = models.TextField()
-    logo_url = models.URLField(blank=True, null=True)
-
-    def __str__(self):
-        return self.name
 class CandlestickPattern(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -97,16 +92,15 @@ class CandlestickPattern(models.Model):
 
     def __str__(self):
         return self.title
-from django.db import models
 
 class ChartPattern(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='chart_patterns/', blank=True, null=True)
+    image = models.ImageField(upload_to='patterns/', null=True, blank=True)
+    order = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
-
 
 class JobOpening(models.Model):
     role = models.CharField(max_length=100)
@@ -116,27 +110,15 @@ class JobOpening(models.Model):
 
     def __str__(self):
         return self.role
-from django.db import models
-
-class ChartPattern(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    image = models.ImageField(upload_to='patterns/', null=True, blank=True) 
-    order = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.title
-from django.db import models
 
 class ContactOption(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    icon = models.CharField(max_length=50, help_text="Bootstrap icon class, e.g. 'bi bi-envelope'")
+    icon = models.CharField(max_length=50)
     link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.title
-from django.db import models
 
 class MutualFund(models.Model):
     CATEGORY_CHOICES = [
@@ -145,7 +127,6 @@ class MutualFund(models.Model):
         ('Debt', 'Debt'),
         ('Hybrid', 'Hybrid'),
     ]
-
     name = models.CharField(max_length=255)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
     aum = models.CharField(max_length=100)
@@ -158,20 +139,15 @@ class MutualFund(models.Model):
     def __str__(self):
         return self.name
 
-
-from django.db import models
-
 class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    color = models.CharField(max_length=20, default='#ffffff')  
+    color = models.CharField(max_length=20, default='#ffffff')
     section = models.CharField(max_length=100, choices=[
         ('platforms', 'Platforms'),
         ('network', 'Network'),
         ('powerful', 'Powerful Platform'),
     ])
-
-from django.db import models
 
 class SharkInvestor(models.Model):
     name = models.CharField(max_length=100)
@@ -180,7 +156,6 @@ class SharkInvestor(models.Model):
 
     def __str__(self):
         return self.name
-from django.db import models
 
 class TechnicalIndicator(models.Model):
     title = models.CharField(max_length=100)
@@ -191,12 +166,28 @@ class TechnicalIndicator(models.Model):
     def __str__(self):
         return self.title
 
-from django.db import models
-
 class TechnicalLesson(models.Model):
     title = models.CharField(max_length=255)
     views = models.PositiveIntegerField(default=0)
     image = models.URLField(blank=True)
     slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.title
+
+class LoginLog(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    login_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.login_time}"
+
+class MediaItem(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    media_type = models.CharField(max_length=50, choices=[('video', 'Video'), ('article', 'Article')])
+    link = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return self.title

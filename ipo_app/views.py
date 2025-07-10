@@ -71,7 +71,7 @@ def careers_page(request):
 
 def careers_view(request):
     jobs = JobOpening.objects.all()
-    return render(request, 'careers.html', {'jobs': jobs})
+    return render(request, 'Careers.html', {'jobs': jobs})
 
 def chart_patterns(request):
     patterns = ChartPattern.objects.all().order_by('order')
@@ -152,6 +152,8 @@ def signup_view(request):
         return redirect('home')
     return render(request, 'Signup.html')
 
+from .models import LoginLog  # ✅ Must be at the top
+
 @csrf_exempt
 def login_view(request):
     if request.method == 'POST':
@@ -160,10 +162,15 @@ def login_view(request):
         user = authenticate(request, username=email, password=password)
         if user is not None:
             login(request, user)
+
+            # ✅ Add this line to save login time
+            LoginLog.objects.create(user=user)
+
             return redirect('home')
         else:
             return render(request, 'Login.html', {'error': 'Invalid credentials'})
     return render(request, 'Login.html')
+
 
 def logout_view(request):
     logout(request)
@@ -173,3 +180,46 @@ def logout_view(request):
 
 def custom_404_view(request, exception):
     return render(request, "Error404.html", status=404)
+from django.shortcuts import render
+
+
+from django.shortcuts import render
+
+def home_view(request):
+    return render(request, 'Home.html') 
+from django.contrib.auth.models import User
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+
+# Already import these if not present
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
+
+@csrf_exempt
+def signup_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        if User.objects.filter(username=email).exists():
+            return render(request, 'Signup.html', {'error': 'Email already exists'})
+        user = User.objects.create_user(username=email, email=email, password=password, first_name=name)
+        login(request, user)
+        return redirect('home')
+    return render(request, 'Signup.html')
+from django.shortcuts import render
+
+
+from django.shortcuts import render
+from .models import MediaItem
+
+def media_view(request):
+    media_items = MediaItem.objects.all().order_by('-created_at')
+    return render(request, 'Media.html', {'media_items': media_items})
