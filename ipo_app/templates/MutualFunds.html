@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,19 +30,19 @@
 
 <div class="container py-4">
 
-   <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Mutual Funds</li>
-      </ol>
-    </nav>
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Mutual Funds</li>
+    </ol>
+  </nav>
 
   <!-- Header Section -->
   <div class="row align-items-center mb-4">
     <div class="col-md-8">
       <h2 class="fw-bold">Large Cap Mutual Funds</h2>
-      <p>Large Cap funds invest in stocks of the top 100 companies in terms of full market capitalization. They invest at least 80% of their assets in large cap companies. These funds are relatively less riskier than other market cap funds.</p>
+      <p>Large Cap funds invest in stocks of the top 100 companies in terms of full market capitalization. They invest at least 80% of their assets in large cap companies. These funds are relatively less risky than other market cap funds.</p>
     </div>
     <div class="col-md-4">
       <div class="highlight-box"></div>
@@ -50,7 +51,6 @@
 
   <!-- Main Section -->
   <div class="row">
-    
     <!-- Filters -->
     <div class="col-md-3 mb-4">
       <h5 class="mb-3">Fund category</h5>
@@ -103,76 +103,6 @@
     <div class="col-md-9">
       <h5 class="mb-4">Overview of Large Cap Mutual Funds</h5>
 
-      <!-- Fund Card 1 -->
-      <div class="card card-fund p-3 mb-3">
-        <div class="d-flex justify-content-between align-items-start">
-          <div>
-            <h6 class="fund-title">Canara Robeco Bluechip Equity Fund</h6>
-            <div class="small text-muted">AUM ₹3,412 Cr | Expense Ratio 0.38%</div>
-            <div class="text-success fw-semibold">5Y CAGR: +17.83%</div>
-          </div>
-          <div class="expand-icon">
-            <i class="bi bi-chevron-down"></i>
-          </div>
-        </div>
-        <hr>
-        <div>
-          <p class="mb-1"><strong>Performance:</strong> The fund has returned 17.83% since inception.</p>
-          <p class="mb-1"><strong>Risk:</strong> Categorized very high by SEBI with low standard deviation.</p>
-          <p class="mb-0"><strong>Composition:</strong> Primarily Private Banks & IT stocks.</p>
-        </div>
-      </div>
-<div class="card card-fund p-3 mb-3">
-        <div class="d-flex justify-content-between align-items-start">
-          <div>
-            <h6 class="fund-title">Canara Robeco Bluechip Equity Fund</h6>
-            <div class="small text-muted">AUM ₹3,412 Cr | Expense Ratio 0.38%</div>
-            <div class="text-success fw-semibold">5Y CAGR: +17.83%</div>
-          </div>
-          <div class="expand-icon">
-            <i class="bi bi-chevron-down"></i>
-          </div>
-        </div>
-        <hr>
-        <div>
-          <p class="mb-1"><strong>Performance:</strong> The fund has returned 17.83% since inception.</p>
-          <p class="mb-1"><strong>Risk:</strong> Categorized very high by SEBI with low standard deviation.</p>
-          <p class="mb-0"><strong>Composition:</strong> Primarily Private Banks & IT stocks.</p>
-        </div>
-      </div><div class="card card-fund p-3 mb-3">
-        <div class="d-flex justify-content-between align-items-start">
-          <div>
-            <h6 class="fund-title">Canara Robeco Bluechip Equity Fund</h6>
-            <div class="small text-muted">AUM ₹3,412 Cr | Expense Ratio 0.38%</div>
-            <div class="text-success fw-semibold">5Y CAGR: +17.83%</div>
-          </div>
-          <div class="expand-icon">
-            <i class="bi bi-chevron-down"></i>
-          </div>
-        </div>
-        <hr>
-        <div>
-          <p class="mb-1"><strong>Performance:</strong> The fund has returned 17.83% since inception.</p>
-          <p class="mb-1"><strong>Risk:</strong> Categorized very high by SEBI with low standard deviation.</p>
-          <p class="mb-0"><strong>Composition:</strong> Primarily Private Banks & IT stocks.</p>
-        </div>
-      </div><div class="card card-fund p-3 mb-3">
-        <div class="d-flex justify-content-between align-items-start">
-          <div>
-            <h6 class="fund-title">Canara Robeco Bluechip Equity Fund</h6>
-            <div class="small text-muted">AUM ₹3,412 Cr | Expense Ratio 0.38%</div>
-            <div class="text-success fw-semibold">5Y CAGR: +17.83%</div>
-          </div>
-          <div class="expand-icon">
-            <i class="bi bi-chevron-down"></i>
-          </div>
-        </div>
-        <hr>
-        <div>
-          <p class="mb-1"><strong>Performance:</strong> The fund has returned 17.83% since inception.</p>
-          <p class="mb-1"><strong>Risk:</strong> Categorized very high by SEBI with low standard deviation.</p>
-          <p class="mb-0"><strong>Composition:</strong> Primarily Private Banks & IT stocks.</p>
-        </div>
       {% for fund in funds %}
 <div class="card card-fund p-3 mb-3">
   <div class="d-flex justify-content-between align-items-start">
@@ -198,6 +128,7 @@
     </div>
   </div>
 </div>
+
 {% include 'components/Footer.html' %}
 
 <!-- Bootstrap Scripts -->

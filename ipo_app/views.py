@@ -54,14 +54,15 @@ def about_us(request):
 def all_brokers(request):
     return render(request, 'AllBroker.html')
 
+
 def blogs_page(request):
     return render(request, 'Blog.html')
 
 def compare_brokers(request):
-    return render(request, 'CompareBroker.html')
+    return render(request, 'BrokerComparison.html')
 
 def community_view(request):
-    return render(request, 'community.html')
+    return render(request, 'Community.html')
 
 def careers_page(request):
     if request.method == "POST":
@@ -223,3 +224,80 @@ from .models import MediaItem
 def media_view(request):
     media_items = MediaItem.objects.all().order_by('-created_at')
     return render(request, 'Media.html', {'media_items': media_items})
+from django.shortcuts import render
+from .models import CommunityPost
+
+def community(request):
+    posts = CommunityPost.objects.order_by('-created_at')
+    return render(request, 'Community.html', {'posts': posts})
+def community(request):
+    return render(request, 'Community.html')
+
+from django.shortcuts import render
+import requests
+
+def home(request):
+    API_KEY = 'YOUR_API_KEY'
+    symbol_list = ['RELIANCE.BSE', 'TCS.BSE', 'INFY.BSE']  # add more if needed
+
+    high_data = []
+    low_data = []
+
+    for symbol in symbol_list:
+        url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}'
+        res = requests.get(url).json()
+
+        try:
+            latest_day = list(res['Time Series (Daily)'].keys())[0]
+            data = res['Time Series (Daily)'][latest_day]
+
+            high = float(data['2. high'])
+            low = float(data['3. low'])
+            close = float(data['4. close'])
+
+            high_data.append({'symbol': symbol, 'price': close, 'high': high})
+            low_data.append({'symbol': symbol, 'price': close, 'low': low})
+        except Exception as e:
+            print(f"Error fetching {symbol}: {e}")
+
+    return render(request, 'home.html', {
+        'high_data': high_data,
+        'low_data': low_data
+    })
+from django.templatetags.static import static
+
+def home(request):
+    brokers = Broker.objects.all()
+    brokers_data = {broker.name: broker.logo_url or "" for broker in brokers}
+    return render(request, "home.html", {
+        "brokers": brokers,
+        "brokers_data": brokers_data,
+    })
+
+
+from django.shortcuts import render
+from .models import IPOModel
+from datetime import date
+
+def ipo_home(request):
+    today = date.today()
+    upcoming_ipos = IPOModel.objects.filter(open_date__gt=today)
+    ongoing_ipos = IPOModel.objects.filter(open_date__lte=today, close_date__gte=today)
+    return render(request, "IPOHome.html", {
+        "upcoming_ipos": upcoming_ipos,
+        "ongoing_ipos": ongoing_ipos
+    })
+from .models import MutualFund
+
+def large_cap_funds_view(request):
+    funds = MutualFund.objects.filter(category='Large Cap')
+    return render(request, 'MutualFunds.html', {'funds': funds})
+
+
+def products_view(request):
+    funds = MutualFund.objects.all()
+    return render(request, 'Products.html', {'funds': funds})
+from django.shortcuts import render
+
+def ipo_home_view(request):
+    return render(request, 'IPOHome.html')  # create a template if needed

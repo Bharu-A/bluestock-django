@@ -30,27 +30,26 @@
     <!-- Nav Items -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav align-items-center">
-        <li class="nav-item"><a class="nav-link" href="/">IPO</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'ipo_home' %}">IPO</a></li>
+<a class="nav-link" href="{% url 'community' %}">Community</a>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown">
-            Products
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Product 1</a></li>
-            <li><a class="dropdown-item" href="#">Product 2</a></li>
-          </ul>
-        </li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown">
+    Products
+  </a>
+  <ul class="dropdown-menu">
 
-        <li class="nav-item"><a class="nav-link" href="#">Brokers</a></li>
+  </ul>
+</li>
 
-        <li class="nav-item me-4">
-          <a class="nav-link d-flex align-items-center" href="#">
-            Live News
-            <span class="badge bg-primary text-white ms-1" style="font-size: 0.6rem;">NEW</span>
-          </a>
-        </li>
+<a class="nav-link" href="{% url 'all-brokers' %}">Brokers</a>
+
+<li class="nav-item me-4">
+    Live News
+    <span class="badge bg-primary text-white ms-1" style="font-size: 0.6rem;">NEW</span>
+  </a>
+</li>
+
 <li class="nav-item dropdown position-relative">
   <a class="nav-link" href="#" role="button" id="gridDropdown" data-bs-toggle="dropdown" aria-expanded="false">
     <i class="bi bi-grid-3x3-gap-fill fs-5"></i>
@@ -58,9 +57,7 @@
   <ul class="dropdown-menu p-3 shadow" aria-labelledby="gridDropdown" style="min-width: 150px; border-radius: 15px;">
   <li><a class="dropdown-item fw-semibold py-2" href="{% url 'home' %}">Home</a></li>
 <li><a class="dropdown-item fw-semibold py-2" href="{% url 'products' %}">Products</a></li>
-<!-- <li><a class="dropdown-item fw-semibold py-2" href="{% url 'media' %}">Media</a></li>
-<li><a class="dropdown-item fw-semibold py-2" href="{% url 'pricing' %}">Pricing</a></li>
-<li><a class="dropdown-item fw-semibold py-2" href="{% url 'support' %}">Support</a></li> -->
+ <li><a class="dropdown-item fw-semibold py-2" href="{% url 'media' %}">Media</a></li>
 
   </ul>
 </li>

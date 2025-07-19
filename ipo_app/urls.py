@@ -1,41 +1,20 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
-    IPOViewSet, StatViewSet, NewsArticleViewSet, FAQViewSet,
-    BrokerViewSet, BlogViewSet,
-    all_brokers, blog_list_view, blogs_page,
-    compare_brokers, candlestick_chart,
-    careers_page, chart_patterns, contact_us,
-    home, large_cap_funds, products_page,
-    shark_investors_view, stock_school, 
-    products_view, technical_indicators_view, technical_analysis_view,
-    signup_view, login_view, logout_view, about_us, media_view,
-    custom_404_view
+    home, community, about_us, all_brokers, blog_list_view, blogs_page,
+    compare_brokers, candlestick_chart, careers_page, chart_patterns,
+    contact_us, products_page, products_view, large_cap_funds,
+    shark_investors_view, stock_school, technical_indicators_view,
+    technical_analysis_view, media_view, signup_view, login_view,
+    logout_view, BrokerViewSet, large_cap_funds_view,products_view
 )
-from django.conf import settings
-from django.conf.urls.static import static
-
-# === API Router ===
+from . import views
 router = DefaultRouter()
-router.register(r'ipo', IPOViewSet)
-router.register(r'stats', StatViewSet)
-router.register(r'news', NewsArticleViewSet)
-router.register(r'faqs', FAQViewSet)
 router.register(r'brokers', BrokerViewSet)
-router.register(r'blogs', BlogViewSet)
 
-# === Combined urlpatterns ===
 urlpatterns = [
-    # API
-    path('api/', include(router.urls)),
-
-    # Auth
-    path('signup/', signup_view, name='signup'),
-    path('login/', login_view, name='login'),
-    path('logout/', logout_view, name='logout'),
-
-    # Pages
     path('', home, name='home'),
+    path('community/', community, name='community'),
     path('about-us/', about_us, name='about_us'),
     path('brokers-page/', all_brokers, name='all-brokers'),
     path('blogs/', blog_list_view, name='blogs-list'),
@@ -53,11 +32,11 @@ urlpatterns = [
     path('technical-indicators/', technical_indicators_view, name='technical_indicators'),
     path('technical-analysis/', technical_analysis_view, name='technical-analysis'),
     path('media/', media_view, name='media'),
-    
+    path('signup/', signup_view, name='signup'),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+    path('ipo-home/', views.ipo_home, name='ipo_home'),
+    path('large-cap/', large_cap_funds_view, name='large_cap_funds'),
+    path('api/', include(router.urls)),
 ]
 
-# === Serve media files ===
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# === Custom 404 handler ===
-handler404 = 'ipo_app.views.custom_404_view'

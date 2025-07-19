@@ -1,0 +1,6 @@
+http://127.0.0.1:8000/admin/ - Admin Login 
+
+python manage.py runserver - Backend start
+ admin username - Bharath_A  it for  backend admin login
+ Password - Bkalmath@74835
+  cd bluestock-django

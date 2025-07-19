@@ -79,25 +79,14 @@
 
     <!-- Lessons Grid -->
     <div class="row g-4">
-      <div class="row g-4">
-  {% for lesson in lessons %}
-    <div class="col-md-4">
-      <div class="lesson-card text-center">
-        <img src="{{ lesson.image }}" alt="{{ lesson.title }}">
-        <h6>{{ lesson.title }}</h6>
-        <p>{{ lesson.views }} views</p>
-        <a href="{% url 'lesson-detail' lesson.slug %}">View Details >></a>
-      </div>
-    </div>
-  {% endfor %}
-</div>
+    
 
       <div class="col-md-4">
         <div class="lesson-card text-center">
           <img src="#" alt="Candlesticks">
           <h6>Candlesticks Charts & Patterns</h6>
           <p>238312 views</p>
-          <a href="#">View Details >></a>
+          <a href="CandleStick.html">View Details >></a>
         </div>
       </div>
       <div class="col-md-4">
@@ -105,7 +94,7 @@
           <img src="#" alt="Chart Patterns">
           <h6>Chart Patterns</h6>
           <p>153141 views</p>
-          <a href="#">View Details >></a>
+          <a href="ChartPatterns.html">View Details >></a>
         </div>
       </div>
 
@@ -114,7 +103,7 @@
           <img src="#" alt="Indicators">
           <h6>Technical Indicators</h6>
           <p>70222 views</p>
-          <a href="#">View Details >></a>
+          <a href="TechnicalIndicators.html">View Details >></a>
         </div>
       </div>
       <div class="col-md-4">
@@ -122,7 +111,7 @@
           <img src="#" alt="Moving Averages">
           <h6>Magic of Moving Averages</h6>
           <p>28581 views</p>
-          <a href="#">View Details >></a>
+          <a href="magic_of_moving_average.html">View Details >></a>
         </div>
       </div>
       <div class="col-md-4">

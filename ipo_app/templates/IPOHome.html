@@ -1,201 +1,152 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IPO Home</title>
-    <div id="navbar-container"></div>
-   <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">IPO</li>
-      </ol>
-    </nav>
-<div class="container py-5">
-  <!-- Upcoming IPOs -->
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4 class="fw-bold">Upcoming IPOs</h4>
-    <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
-  </div>
-  <div id="upcomingIpoCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="row g-3">
-          <div class="col-md-4">
-            <div class="p-3 bg-white shadow-sm rounded">
-              <h6>Navin Fluorine Intl</h6>
-              <p>₹250 - ₹265 <br> July 10 - July 12</p>
-              <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+</head>
+<body>
+  {% include 'components/Navbar.html' %}
+
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="px-4 pt-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">IPO</li>
+    </ol>
+  </nav>
+
+  <div class="container py-5">
+    <!-- Upcoming IPOs -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4 class="fw-bold">Upcoming IPOs</h4>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
+    </div>
+
+    {% if upcoming_ipos %}
+    <div id="upcomingIpoCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row g-3">
+            {% for ipo in upcoming_ipos %}
+            <div class="col-md-4">
+              <div class="p-3 bg-white shadow-sm rounded">
+                <h6>{{ ipo.company_name }}</h6>
+                <p>{{ ipo.price_band }} <br> {{ ipo.open_date }} - {{ ipo.close_date }}</p>
+                <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#upcomingIpoCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#upcomingIpoCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+    {% else %}
+      <p>No upcoming IPOs found.</p>
+    {% endif %}
+
+    <!-- IPO CTA Banner -->
+    <div class="my-5 p-4 bg-white shadow-sm rounded text-center">
+      <h5 class="text-primary fw-bold mb-2">
+        <img src="{% static 'images/logo.jpg' %}" style="height: 30px; vertical-align: middle; margin-right: 8px;">
+        BLUESTOCK
+      </h5>
+      <h4 class="fw-semibold">Applying for this IPO?</h4>
+      <p class="text-muted mb-3">You can apply easily using UPI via your broker or directly on Bluestock.</p>
+      <a href="#" class="btn btn-primary">View How to Apply</a>
+    </div>
+
+    <!-- Ongoing IPOs -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4 class="fw-bold">Ongoing IPOs</h4>
+      <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
+    </div>
+
+    {% if ongoing_ipos %}
+    <div id="ongoingIpoCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row g-3">
+            {% for ipo in ongoing_ipos %}
+            <div class="col-md-4">
+              <div class="p-3 bg-white shadow-sm rounded">
+                <h6>{{ ipo.company_name }}</h6>
+                <p>{{ ipo.price_band }} <br> {{ ipo.open_date }} - {{ ipo.close_date }}</p>
+                <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#ongoingIpoCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#ongoingIpoCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+    {% else %}
+      <p>No ongoing IPOs found.</p>
+    {% endif %}
+
+    <!-- News & Analysis -->
+    <div class="row mt-5 g-4">
+      <div class="col-md-6">
+        <div class="p-3 bg-white shadow-sm rounded">
+          <h6>IPO News</h6>
+          <p>Latest updates on upcoming, ongoing, and recently closed IPOs in India.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-white shadow-sm rounded">
+          <h6>IPO Analysis</h6>
+          <p>Review of financials, risk factors, and fundamentals of IPO-bound companies.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQs -->
+    <div class="my-5">
+      <h4 class="mb-3 fw-bold">Frequently Asked Questions</h4>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+              What is an IPO?
+            </button>
+          </h2>
+          <div id="a1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              An IPO (Initial Public Offering) is when a private company offers shares to the public for the first time.
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="p-3 bg-white shadow-sm rounded">
-              <h6>GRAC Exports Ltd</h6>
-              <p>₹180 - ₹190 <br> July 11 - July 13</p>
-              <a href="#" class="btn btn-sm btn-outline-primary">View</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 bg-white shadow-sm rounded">
-              <h6>IK Smartcity Ltd</h6>
-              <p>₹300 - ₹320 <br> July 12 - July 14</p>
-              <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+              How to invest in an IPO?
+            </button>
+          </h2>
+          <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              You can apply through your broker’s platform or UPI-enabled apps like Zerodha, Groww, etc.
             </div>
           </div>
         </div>
       </div>
-      <!-- Add more carousel-item blocks if needed -->
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#upcomingIpoCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#upcomingIpoCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
-
-  <!-- IPO CTA Banner -->
-  <div class="my-5 p-4 bg-white shadow-sm rounded text-center">
-    <h5 class="text-primary fw-bold mb-2">BLUESTOCK</h5>
-    <h4 class="fw-semibold">Applying for this IPO?</h4>
-    <p class="text-muted mb-3">You can apply easily using UPI via your broker or directly on Bluestock.</p>
-    <a href="#" class="btn btn-primary">View How to Apply</a>
-  </div>
-
-  <!-- Ongoing IPOs -->
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4 class="fw-bold">Ongoing IPOs</h4>
-    <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
-  </div>
-  <div id="ongoingIpoCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="row g-3">
-          <div class="col-md-4">
-            <div class="p-3 bg-white shadow-sm rounded">
-              <h6>AMNS India Ltd</h6>
-              <p>₹320 - ₹340 <br> July 8 - July 10</p>
-              <a href="#" class="btn btn-sm btn-outline-primary">View</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 bg-white shadow-sm rounded">
-              <h6>Innova Capital</h6>
-              <p>₹180 - ₹195 <br> July 9 - July 11</p>
-              <a href="#" class="btn btn-sm btn-outline-primary">View</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 bg-white shadow-sm rounded">
-              <h6>Accel Engineers</h6>
-              <p>₹120 - ₹130 <br> July 10 - July 12</p>
-              <a href="#" class="btn btn-sm btn-outline-primary">View</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#ongoingIpoCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#ongoingIpoCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
-
-  <!-- News & Analysis -->
-  <div class="row mt-5 g-4">
-    <div class="col-md-6">
-      <div class="p-3 bg-white shadow-sm rounded">
-        <h6>IPO News</h6>
-        <p>Latest updates on upcoming, ongoing, and recently closed IPOs in India.</p>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="p-3 bg-white shadow-sm rounded">
-        <h6>IPO Analysis</h6>
-        <p>Review of financials, risk factors, and fundamentals of IPO-bound companies.</p>
-      </div>
     </div>
   </div>
 
-  <!-- FAQs -->
-  <div class="my-5">
-    <h4 class="mb-3 fw-bold">Frequently Asked Questions</h4>
-    <div class="accordion" id="faqAccordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="q1">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
-            What is an IPO?
-          </button>
-        </h2>
-        <div id="a1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            An IPO (Initial Public Offering) is when a private company offers shares to the public for the first time.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="q2">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
-            How to invest in an IPO?
-          </button>
-        </h2>
-        <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            You can apply through your broker’s platform or UPI-enabled apps like Zerodha, Groww, etc.
-          </div>
-        </div>
-      </div>
-      <!-- Add more FAQs as needed -->
-    </div>
-  </div>
-</div>
+  {% include 'components/Footer.html' %}
 
-    <!-- Footer Include -->
-<div id="footer-placeholder"></div>
-
-  <!-- Footer Component -->
-  <div id="footer-container" class="mt-5"></div>
-
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Load Navbar
-    fetch("components/Navbar.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("navbar-container").innerHTML = data;
-      });
-
-    // Load Footer
-    fetch("components/Footer.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("footer-container").innerHTML = data;
-      });
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<div id="ipo-container"></div>
-
-<script>
-fetch('/api/ipo/')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById('ipo-container');
-    container.innerHTML = "";
-    data.forEach(ipo => {
-      container.innerHTML += `
-        <div class="card mb-3 p-3">
-          <h3>${ipo.company_name}</h3>
-          <p>Status: ${ipo.status}</p>
-          <p>Price Band: ${ipo.price_band}</p>
-        </div>
-      `;
-    });
-  });
-</script>
-
 </html>
