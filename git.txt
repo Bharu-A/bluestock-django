@@ -3,3 +3,5 @@ git add .
 git commit -m "Your meaningful commit message"
 git remote add origin https://github.com/your-username/your-repo-name.git
 git push -u origin main
+git config --global user.name "Bharu-A"
+git config --global user.email "bharathkalmat108@gmail.com"
