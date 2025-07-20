@@ -1,0 +1,5 @@
+git status
+git add .
+git commit -m "Your meaningful commit message"
+git remote add origin https://github.com/your-username/your-repo-name.git
+git push -u origin main

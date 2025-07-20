@@ -4,3 +4,9 @@ python manage.py runserver - Backend start
  admin username - Bharath_A  it for  backend admin login
  Password - Bkalmath@74835
   cd bluestock-django
+
+
+for terminal for setting up the environment
+  cd D:\
+PS D:\> cd bluestock-django
+PS D:\bluestock-django> .\env\Scripts\activate
