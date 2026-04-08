@@ -5,7 +5,8 @@ from .models import (
     ChartPattern, JobOpening,
     ContactOption, MutualFund,
     Product, SharkInvestor,
-    TechnicalIndicator, TechnicalLesson
+    TechnicalIndicator, TechnicalLesson,
+    CommunityPost, LoginLog, MediaItem
 )
 
 # Custom Admin for IPO
@@ -38,7 +39,6 @@ admin.site.register(Product)
 admin.site.register(SharkInvestor)
 admin.site.register(TechnicalIndicator)
 admin.site.register(TechnicalLesson)
-from .models import LoginLog
+admin.site.register(CommunityPost)
 admin.site.register(LoginLog)
-from .models import MediaItem
 admin.site.register(MediaItem)

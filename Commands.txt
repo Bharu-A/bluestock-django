@@ -9,4 +9,5 @@ python manage.py runserver - Backend start
 for terminal for setting up the environment
   cd D:\
 PS D:\> cd bluestock-django
+python -m venv venv
 PS D:\bluestock-django> .\env\Scripts\activate
