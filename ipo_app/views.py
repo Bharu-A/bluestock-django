@@ -16,7 +16,13 @@ from .models import (
 )
 from .serializers import (
     StatSerializer, NewsArticleSerializer, FAQSerializer,
-    IPOSerializer, BrokerSerializer, BlogSerializer
+    IPOSerializer, BrokerSerializer, BlogSerializer,
+    CandlestickPatternSerializer, ChartPatternSerializer,
+    ContactOptionSerializer, JobOpeningSerializer,
+    MutualFundSerializer, ProductSerializer,
+    SharkInvestorSerializer, TechnicalIndicatorSerializer,
+    TechnicalLessonSerializer, MediaItemSerializer,
+    CommunityPostSerializer
 )
 
 # === API ViewSets ===
@@ -45,14 +51,80 @@ class BlogViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Blog.objects.all().order_by('-published_date')
     serializer_class = BlogSerializer
 
+class CandlestickPatternViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = CandlestickPattern.objects.all()
+    serializer_class = CandlestickPatternSerializer
+
+class ChartPatternViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ChartPattern.objects.all().order_by('order')
+    serializer_class = ChartPatternSerializer
+
+class ContactOptionViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ContactOption.objects.all()
+    serializer_class = ContactOptionSerializer
+
+class JobOpeningViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = JobOpening.objects.all()
+    serializer_class = JobOpeningSerializer
+
+class MutualFundViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = MutualFund.objects.all()
+    serializer_class = MutualFundSerializer
+
+class ProductViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class SharkInvestorViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = SharkInvestor.objects.all()
+    serializer_class = SharkInvestorSerializer
+
+class TechnicalIndicatorViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = TechnicalIndicator.objects.all().order_by('order')
+    serializer_class = TechnicalIndicatorSerializer
+
+class TechnicalLessonViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = TechnicalLesson.objects.all()
+    serializer_class = TechnicalLessonSerializer
+
+class MediaItemViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = MediaItem.objects.all().order_by('-created_at')
+    serializer_class = MediaItemSerializer
+
+class CommunityPostViewSet(viewsets.ModelViewSet):
+    queryset = CommunityPost.objects.all().order_by('-created_at')
+    serializer_class = CommunityPostSerializer
+
 # === Template Views ===
+
+def get_market_movers():
+    # Helper to fetch or generate stock market movers data.
+    # In a production environment, this could call an external finance API.
+    high_data = [
+        {"symbol": "RELIANCE", "price": "2,450.00", "high": "2,465.00"},
+        {"symbol": "TCS", "price": "3,820.00", "high": "3,850.00"},
+        {"symbol": "HDFCBANK", "price": "1,610.00", "high": "1,625.00"},
+        {"symbol": "INFY", "price": "1,440.00", "high": "1,455.00"},
+        {"symbol": "ICICIBANK", "price": "1,120.00", "high": "1,135.00"},
+    ]
+    low_data = [
+        {"symbol": "PAYTM", "price": "380.00", "low": "375.00"},
+        {"symbol": "WIPRO", "price": "410.00", "low": "405.00"},
+        {"symbol": "HINDUNILVR", "price": "2,280.00", "low": "2,260.00"},
+        {"symbol": "ITC", "price": "415.00", "low": "410.00"},
+        {"symbol": "KOTAKBANK", "price": "1,720.00", "low": "1,705.00"},
+    ]
+    return high_data, low_data
 
 def home(request):
     brokers = Broker.objects.all()
     brokers_data = {broker.name: broker.logo_url or "" for broker in brokers}
+    high_data, low_data = get_market_movers()
     return render(request, "Home.html", {
         "brokers": brokers,
         "brokers_data": brokers_data,
+        "high_data": high_data,
+        "low_data": low_data,
     })
 
 def about_us(request):

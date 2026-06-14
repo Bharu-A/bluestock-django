@@ -11,7 +11,24 @@ from .views import (
 from . import views
 
 router = DefaultRouter()
-router.register(r'brokers', BrokerViewSet)
+router.register(r'brokers', views.BrokerViewSet)
+router.register(r'stats', views.StatViewSet)
+router.register(r'news', views.NewsArticleViewSet)
+router.register(r'faqs', views.FAQViewSet)
+router.register(r'ipos', views.IPOViewSet)
+router.register(r'blogs', views.BlogViewSet)
+router.register(r'candlesticks', views.CandlestickPatternViewSet)
+router.register(r'charts', views.ChartPatternViewSet)
+router.register(r'contacts', views.ContactOptionViewSet)
+router.register(r'jobs', views.JobOpeningViewSet)
+router.register(r'mutual-funds', views.MutualFundViewSet)
+router.register(r'products', views.ProductViewSet)
+router.register(r'sharks', views.SharkInvestorViewSet)
+router.register(r'indicators', views.TechnicalIndicatorViewSet)
+router.register(r'lessons', views.TechnicalLessonViewSet)
+router.register(r'media-items', views.MediaItemViewSet)
+router.register(r'community-posts', views.CommunityPostViewSet)
+
 
 urlpatterns = [
     path('', home, name='home'),

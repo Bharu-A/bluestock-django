@@ -528,7 +528,7 @@ ul li {
                         {% endfor %}
                     </select>
                     <div class="text-center mt-2">
-                        <img id="img-broker1" src="{% static brokers.0.logo %}" alt="Broker 1" height="50">
+                        <img id="img-broker1" src="{{ brokers.0.logo_url }}" alt="Broker 1" height="50">
                     </div>
                 </div>
 
@@ -536,11 +536,11 @@ ul li {
                 <div>
                     <select name="broker2" class="form-select text-center">
                         {% for broker in brokers %}
-                        <option value="{{ broker.name }}">{{ broker.name }}</option>
+                        <option value="{{ broker.name }}" {% if forloop.counter0 == 1 %}selected{% endif %}>{{ broker.name }}</option>
                         {% endfor %}
                     </select>
                     <div class="text-center mt-2">
-                        <img id="img-broker2" src="{% static brokers.1.logo %}" alt="Broker 2" height="50">
+                        <img id="img-broker2" src="{{ brokers.1.logo_url }}" alt="Broker 2" height="50">
                     </div>
                 </div>
             </div>
